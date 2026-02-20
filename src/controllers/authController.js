@@ -1,4 +1,4 @@
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -10,8 +10,34 @@ import {
   updateProfile,
 } from "firebase/auth";
 
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
+
+async function upsertUserProfile(user, extra = {}) {
+  if (!user?.uid) return;
+
+  const ref = doc(db, "usersINGLES", user.uid);
+  const snap = await getDoc(ref);
+
+  const baseData = {
+    uid: user.uid,
+    email: user.email ?? null,
+    displayName: user.displayName ?? null,
+    photoURL: user.photoURL ?? null,
+    providerId: user.providerData?.[0]?.providerId ?? "unknown",
+    lastLoginAt: serverTimestamp(),
+    ...extra,
+  };
+
+  // Si es nuevo, guardamos createdAt. Si existe, no lo pisamos.
+  if (!snap.exists()) {
+    await setDoc(ref, { ...baseData, createdAt: serverTimestamp() }, { merge: true });
+  } else {
+    await setDoc(ref, baseData, { merge: true });
+  }
+}
 
 export const authController = {
   onAuthChange(callback) {
@@ -19,19 +45,28 @@ export const authController = {
   },
 
   async loginWithEmail(email, password) {
-    return await signInWithEmailAndPassword(auth, email, password);
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    await upsertUserProfile(cred.user);
+    return cred;
   },
 
   async registerWithEmail({ name, email, password }) {
     const cred = await createUserWithEmailAndPassword(auth, email, password);
+
     if (name?.trim()) {
       await updateProfile(cred.user, { displayName: name.trim() });
     }
+
+    // Important: recargar datos actualizados del user (displayName)
+    await upsertUserProfile(auth.currentUser, { displayName: auth.currentUser?.displayName ?? name?.trim() });
+
     return cred;
   },
 
   async loginWithGoogle() {
-    return await signInWithPopup(auth, googleProvider);
+    const cred = await signInWithPopup(auth, googleProvider);
+    await upsertUserProfile(cred.user);
+    return cred;
   },
 
   async resetPassword(email) {
