@@ -1,36 +1,72 @@
 import { Link } from "react-router-dom";
+import { 
+  Globe, 
+  BookOpen, 
+  TrendingUp, 
+  Sparkles, 
+  Award, 
+  Star, 
+  Calendar,
+  ChevronRight,
+  CheckCircle2,
+  Zap,
+  BarChart3,
+  Languages,
+  Target,
+  Volume2,
+  Clock,
+  Shield,
+  MapPin
+} from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
-      {/* Background: glow + gradient + grid */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-1/2 h-[720px] w-[720px] -translate-x-1/2 rounded-full bg-indigo-500/18 blur-3xl" />
-        <div className="absolute -bottom-56 right-[-180px] h-[780px] w-[780px] rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(99,102,241,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:44px_44px]" />
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-slate-50 to-white text-slate-900">
+      {/* Background: Floating flags - minimal y elegante */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Solo 4 banderas principales, bien espaciadas */}
+        <div className="absolute left-[5%] top-[10%] h-96 w-96 animate-float-slow opacity-[0.12]">
+          <FlagUnitedKingdom className="h-full w-full drop-shadow-2xl" />
+        </div>
+        <div className="absolute right-[5%] top-[15%] h-96 w-96 animate-float opacity-[0.12]">
+          <FlagUnitedStates className="h-full w-full drop-shadow-2xl" />
+        </div>
+        <div className="absolute bottom-[10%] left-[10%] h-80 w-80 animate-float-slower opacity-[0.12]">
+          <FlagCanada className="h-full w-full drop-shadow-2xl" />
+        </div>
+        <div className="absolute bottom-[15%] right-[10%] h-80 w-80 animate-float-medium opacity-[0.12]">
+          <FlagAustralia className="h-full w-full drop-shadow-2xl" />
+        </div>
+        
+        {/* Glow effects muy sutiles */}
+        <div className="absolute -top-40 left-1/2 h-[820px] w-[820px] -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl" />
+        <div className="absolute -bottom-56 right-[-180px] h-[880px] w-[880px] rounded-full bg-sky-400/5 blur-3xl" />
       </div>
 
       <main className="relative mx-auto max-w-6xl px-6 py-20 sm:py-24">
         {/* Top badge */}
         <div className="flex justify-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-300">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.55)]" />
-            Método diario • Progreso medible • Enfocado en fluidez
+          <div className="inline-flex items-center gap-3 rounded-full border border-emerald-200 bg-white/80 px-5 py-1.5 text-sm text-emerald-800 shadow-lg backdrop-blur-sm">
+            <div className="relative">
+              <span className="absolute h-2 w-2 animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_18px_rgba(16,185,129,0.55)]" />
+            </div>
+            <Globe className="h-4 w-4 text-emerald-600" />
+            <span className="font-medium">Método diario • Progreso medible • Fluidez real</span>
           </div>
         </div>
 
         {/* Hero */}
-        <section className="mt-10 text-center">
-          <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
+        <section className="mt-12 text-center">
+          <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
             Aprende inglés con un sistema{" "}
-            <span className="bg-gradient-to-r from-indigo-300 via-sky-200 to-cyan-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-600 to-sky-600 bg-clip-text text-transparent">
               premium
             </span>{" "}
             diseñado para resultados.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 sm:text-xl">
             Lecciones cortas, práctica inteligente y rachas que te mantienen consistente.
             Construye vocabulario y confianza, sin perderte en teoría.
           </p>
@@ -39,73 +75,88 @@ export default function Landing() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               to="/auth/login"
-              className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-2xl bg-indigo-500 px-8 py-3 font-semibold text-white transition hover:bg-indigo-400 sm:w-auto"
+              className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-600 to-sky-600 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/30 sm:w-auto"
             >
-              Empezar ahora
-              <span className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-[radial-gradient(700px_240px_at_50%_0%,rgba(255,255,255,0.25),transparent_60%)]" />
+              <span>Empezar ahora</span>
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
 
             <Link
               to="/auth/register"
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-8 py-3 text-center font-semibold text-slate-100 transition hover:bg-white/10 sm:w-auto"
+              className="group w-full rounded-2xl border border-slate-200 bg-white px-8 py-4 text-center font-semibold text-slate-700 shadow-lg transition-all hover:border-emerald-300 hover:shadow-xl sm:w-auto"
             >
               Crear cuenta gratis
             </Link>
           </div>
 
-          {/* Social proof */}
-          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-3 text-sm text-slate-400 sm:flex-row sm:justify-center">
+          {/* Social proof - más compacto */}
+          <div className="mx-auto mt-8 flex items-center justify-center gap-6 text-sm text-slate-600">
             <div className="flex items-center gap-2">
-              <Stars />
-              <span>Diseño enfocado en consistencia</span>
+              <div className="flex -space-x-2">
+                <FlagUnitedKingdom className="h-6 w-6 rounded-full border-2 border-white shadow-lg" />
+                <FlagUnitedStates className="h-6 w-6 rounded-full border-2 border-white shadow-lg" />
+                <FlagCanada className="h-6 w-6 rounded-full border-2 border-white shadow-lg" />
+              </div>
+              <span className="font-medium text-slate-700">+2k estudiantes</span>
             </div>
-            <span className="hidden sm:inline text-white/10">•</span>
-            <span>Sin anuncios</span>
-            <span className="hidden sm:inline text-white/10">•</span>
-            <span>Tu progreso se guarda con tu cuenta</span>
+            <div className="h-4 w-px bg-slate-300" />
+            <div className="flex items-center gap-2">
+              <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+              <span className="text-slate-700">4.9/5</span>
+            </div>
+            <div className="h-4 w-px bg-slate-300" />
+            <div className="flex items-center gap-1">
+              <MapPin className="h-4 w-4 text-emerald-600" />
+              <span className="text-slate-700">25+ países</span>
+            </div>
           </div>
         </section>
 
         {/* Showcase */}
-        <section className="mt-16">
+        <section className="mt-24">
           <div className="grid gap-6 lg:grid-cols-12">
             {/* Left: cards */}
             <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
+              <div className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-xl backdrop-blur-sm">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs font-medium tracking-wider text-slate-400">
-                      YOUR DASHBOARD
-                    </p>
-                    <h2 className="mt-1 text-xl font-semibold">
+                    <div className="flex items-center gap-2 text-xs font-medium tracking-wider text-emerald-700">
+                      <Sparkles className="h-3 w-3" />
+                      <span>TU DASHBOARD</span>
+                    </div>
+                    <h2 className="mt-2 text-xl font-semibold text-slate-900">
                       Aprende con foco. Mide tu avance.
                     </h2>
-                    <p className="mt-2 text-sm text-slate-400">
+                    <p className="mt-2 text-sm text-slate-600">
                       Una vista clara: lecciones, práctica y progreso en un solo lugar.
                     </p>
                   </div>
-                  <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/20 to-cyan-400/10">
-                    <BookIcon />
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-emerald-500/10 to-sky-500/10">
+                    <BookOpen className="h-6 w-6 text-emerald-600" />
                   </div>
                 </div>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                  <MiniStat label="Racha" value="7 días" tone="emerald" />
-                  <MiniStat label="Lecciones" value="18" tone="indigo" />
-                  <MiniStat label="Vocab" value="120" tone="cyan" />
+                  <MiniStat label="Racha" value="7 días" />
+                  <MiniStat label="Lecciones" value="18" />
+                  <MiniStat label="Palabras" value="120" />
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-white/10 bg-gradient-to-r from-indigo-500/15 to-cyan-400/10 p-5">
+                <div className="mt-6 rounded-2xl bg-slate-50 p-5">
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Progreso semanal</p>
-                    <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">
-                      +12% esta semana
+                    <p className="text-sm font-semibold text-slate-800">Progreso semanal</p>
+                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
+                      ↑ +12%
                     </span>
                   </div>
-                  <div className="mt-4 h-24 rounded-xl bg-white/5" />
-                  <div className="mt-3 flex justify-between text-xs text-slate-400">
-                    <span>Consistencia</span>
-                    <span>Alta</span>
+                  <div className="mt-4 flex h-20 items-end gap-1">
+                    {[65, 70, 80, 75, 85, 90, 82].map((height, i) => (
+                      <div
+                        key={i}
+                        className="h-full w-full rounded-t-lg bg-gradient-to-t from-emerald-500 to-sky-400"
+                        style={{ height: `${height}%` }}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -113,44 +164,45 @@ export default function Landing() {
 
             {/* Right: feature list */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
-                <p className="text-xs font-medium tracking-wider text-slate-400">
-                  WHY IT WORKS
-                </p>
-                <h3 className="mt-1 text-xl font-semibold">Un método simple, bien hecho.</h3>
+              <div className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-xl backdrop-blur-sm">
+                <div className="flex items-center gap-2 text-xs font-medium tracking-wider text-emerald-700">
+                  <Target className="h-3 w-3" />
+                  <span>POR QUÉ FUNCIONA</span>
+                </div>
+                <h3 className="mt-2 text-xl font-semibold text-slate-900">Un método simple, bien hecho.</h3>
 
                 <div className="mt-6 space-y-4">
                   <FeatureRow
-                    title="Lecciones cortas y claras"
-                    desc="Aprendes lo esencial, sin ruido. Ideal para construir hábito."
-                    icon={<CheckIcon />}
+                    title="Lecciones cortas"
+                    desc="Aprendes lo esencial, sin ruido."
+                    icon={<CheckCircle2 className="h-5 w-5 text-emerald-600" />}
                   />
                   <FeatureRow
                     title="Práctica inteligente"
-                    desc="Refuerza lo que realmente se te olvida con ejercicios."
-                    icon={<BoltIcon />}
+                    desc="Refuerza lo que realmente se te olvida."
+                    icon={<Zap className="h-5 w-5 text-sky-600" />}
                   />
                   <FeatureRow
                     title="Progreso visible"
-                    desc="Rachas, métricas y objetivos. Motivación real, no promesas."
-                    icon={<ChartIcon />}
+                    desc="Rachas y métricas que motivan."
+                    icon={<BarChart3 className="h-5 w-5 text-emerald-600" />}
                   />
                 </div>
 
-                <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-sm text-slate-300">
-                    Empieza hoy y mantén tu racha. Tu yo del futuro te lo va a agradecer.
+                <div className="mt-6 rounded-2xl bg-slate-50 p-4">
+                  <p className="text-sm text-slate-700">
+                    Empieza hoy y mantén tu racha. Tu yo del futuro te lo agradecerá.
                   </p>
-                  <div className="mt-3 flex gap-3">
+                  <div className="mt-3 flex gap-2">
                     <Link
                       to="/auth/login"
-                      className="flex-1 rounded-2xl bg-indigo-500 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-indigo-400"
+                      className="flex-1 rounded-xl bg-gradient-to-r from-emerald-600 to-sky-600 px-4 py-2.5 text-center text-sm font-semibold text-white"
                     >
-                      Iniciar sesión
+                      Entrar
                     </Link>
                     <Link
                       to="/auth/register"
-                      className="flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-center text-sm font-semibold text-slate-100 transition hover:bg-white/10"
+                      className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-center text-sm font-semibold text-slate-700"
                     >
                       Registrarme
                     </Link>
@@ -161,42 +213,43 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Feature grid */}
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
-          <Card
+        {/* Features grid - simplificado */}
+        <section className="mt-16 grid gap-4 md:grid-cols-3">
+          <SimpleCard
+            icon={<BookOpen className="h-5 w-5" />}
             title="Vocabulario útil"
-            desc="Aprende palabras y frases que realmente usarás en conversación."
+            desc="Palabras que realmente usarás."
           />
-          <Card
-            title="Pronunciación guiada"
-            desc="Espacios listos para integrar práctica de speaking más adelante."
+          <SimpleCard
+            icon={<Volume2 className="h-5 w-5" />}
+            title="Pronunciación"
+            desc="Habla con confianza."
           />
-          <Card
-            title="Ritmo sostenible"
-            desc="Diseñado para 10–15 min/día. Mejor poco constante que mucho una vez."
+          <SimpleCard
+            icon={<Clock className="h-5 w-5" />}
+            title="10-15 min/día"
+            desc="Ritmo sostenible."
           />
         </section>
 
-        {/* Final CTA */}
+        {/* Final CTA - simplificado */}
         <section className="mt-16">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-indigo-500/15 to-cyan-400/10 p-8 shadow-2xl backdrop-blur-xl">
-            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-xl backdrop-blur-sm">
+            <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
               <div>
-                <h3 className="text-2xl font-bold">¿Listo para empezar?</h3>
-                <p className="mt-2 text-slate-300">
-                  Crea tu cuenta y guarda tu progreso desde el día 1.
-                </p>
+                <h3 className="text-2xl font-bold text-slate-900">¿Listo para empezar?</h3>
+                <p className="text-slate-600">Crea tu cuenta gratis y empieza hoy.</p>
               </div>
-              <div className="flex w-full gap-3 sm:w-auto">
+              <div className="flex gap-3">
                 <Link
                   to="/auth/login"
-                  className="flex-1 rounded-2xl bg-indigo-500 px-6 py-3 text-center font-semibold text-white transition hover:bg-indigo-400 sm:flex-none"
+                  className="rounded-xl bg-gradient-to-r from-emerald-600 to-sky-600 px-6 py-3 font-semibold text-white shadow-lg"
                 >
                   Entrar
                 </Link>
                 <Link
                   to="/auth/register"
-                  className="flex-1 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-center font-semibold text-slate-100 transition hover:bg-white/10 sm:flex-none"
+                  className="rounded-xl border border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 shadow-lg"
                 >
                   Crear cuenta
                 </Link>
@@ -205,22 +258,25 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="mt-14 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} English Learning Platform — Built with focus.
+        {/* Footer simplificado */}
+        <footer className="mt-16 text-center text-sm text-slate-500">
+          <p>© {new Date().getFullYear()} English Learning Platform</p>
         </footer>
       </main>
     </div>
   );
 }
 
-/* ---------- UI bits ---------- */
+/* ---------- Componentes simplificados ---------- */
 
-function Card({ title, desc }) {
+function SimpleCard({ icon, title, desc }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-white/10">
-      <h4 className="text-lg font-semibold">{title}</h4>
-      <p className="mt-3 text-sm text-slate-400">{desc}</p>
+    <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-md backdrop-blur-sm">
+      <div className="mb-3 grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-emerald-500/10 to-sky-500/10">
+        <div className="text-emerald-600">{icon}</div>
+      </div>
+      <h4 className="font-semibold text-slate-900">{title}</h4>
+      <p className="mt-1 text-sm text-slate-600">{desc}</p>
     </div>
   );
 }
@@ -228,87 +284,103 @@ function Card({ title, desc }) {
 function FeatureRow({ title, desc, icon }) {
   return (
     <div className="flex gap-3">
-      <div className="mt-0.5 grid h-9 w-9 place-items-center rounded-2xl border border-white/10 bg-white/5">
+      <div className="mt-0.5 grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-emerald-500/10 to-sky-500/10">
         {icon}
       </div>
       <div>
-        <p className="font-semibold">{title}</p>
-        <p className="mt-1 text-sm text-slate-400">{desc}</p>
+        <p className="font-medium text-slate-800">{title}</p>
+        <p className="text-sm text-slate-600">{desc}</p>
       </div>
     </div>
   );
 }
 
-function MiniStat({ label, value, tone }) {
-  const toneClass =
-    tone === "emerald"
-      ? "bg-emerald-500/15 text-emerald-300"
-      : tone === "cyan"
-      ? "bg-cyan-400/10 text-cyan-200"
-      : "bg-indigo-500/15 text-indigo-200";
-
+function MiniStat({ label, value }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-      <p className="text-xs text-slate-400">{label}</p>
-      <div className="mt-2 flex items-center justify-between">
-        <p className="text-lg font-semibold">{value}</p>
-        <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${toneClass}`}>
-          Live
-        </span>
-      </div>
+    <div className="rounded-xl border border-slate-200 bg-white p-3">
+      <p className="text-xs text-slate-500">{label}</p>
+      <p className="mt-1 text-lg font-bold text-slate-900">{value}</p>
     </div>
   );
 }
 
-function Stars() {
+/* ---------- Banderas (solo las 4 principales) ---------- */
+
+function FlagUnitedKingdom({ className = "" }) {
   return (
-    <div className="flex items-center gap-1" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-amber-300/90">
-          <path d="M12 17.3l-6.18 3.64 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.46 4.67 1.64 7.03z" />
-        </svg>
+    <svg className={className} viewBox="0 0 60 40">
+      <rect width="60" height="40" fill="#012169"/>
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="white" strokeWidth="6"/>
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="#C8102E" strokeWidth="4"/>
+      <path d="M0 20 L60 20 M30 0 L30 40" stroke="white" strokeWidth="8"/>
+      <path d="M0 20 L60 20 M30 0 L30 40" stroke="#C8102E" strokeWidth="4"/>
+    </svg>
+  );
+}
+
+function FlagUnitedStates({ className = "" }) {
+  return (
+    <svg className={className} viewBox="0 0 60 40">
+      {[...Array(13)].map((_, i) => (
+        <rect key={i} y={i * 3.076} width="60" height="3.076" fill={i % 2 === 0 ? "#B22234" : "white"}/>
       ))}
-    </div>
+      <rect width="24" height="21.538" fill="#3C3B6E"/>
+      {[...Array(50)].map((_, i) => {
+        const row = Math.floor(i / 6);
+        const col = i % 6;
+        return (
+          <circle key={i} cx={2 + col * 4} cy={2 + row * 3.5} r="0.8" fill="white"/>
+        );
+      })}
+    </svg>
   );
 }
 
-/* Icons */
-function CheckIcon() {
+function FlagCanada({ className = "" }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-emerald-300">
-      <path d="M20 7L10 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className={className} viewBox="0 0 60 40">
+      <rect width="60" height="40" fill="white"/>
+      <rect width="15" height="40" fill="#C8102E"/>
+      <rect x="45" width="15" height="40" fill="#C8102E"/>
+      <path d="M30 8 L33 16 L38 16 L34 20 L36 26 L30 22 L24 26 L26 20 L22 16 L27 16 L30 8Z" fill="#C8102E"/>
     </svg>
   );
 }
-function BoltIcon() {
+
+function FlagAustralia({ className = "" }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-indigo-200">
-      <path d="M13 2L3 14h7l-1 8 12-14h-7l1-6Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    <svg className={className} viewBox="0 0 60 40">
+      <rect width="60" height="40" fill="#012169"/>
+      <path d="M0 0 L30 20 M30 0 L0 20" stroke="white" strokeWidth="2"/>
+      <path d="M0 0 L30 20 M30 0 L0 20" stroke="#C8102E" strokeWidth="1.5"/>
+      <circle cx="15" cy="10" r="6" fill="white"/>
+      <circle cx="15" cy="10" r="5" fill="#012169"/>
     </svg>
   );
 }
-function ChartIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-cyan-200">
-      <path d="M4 19V5m6 14V9m6 10V7m6 12V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-function BookIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-100">
-      <path
-        d="M4 5.5C4 4.12 5.12 3 6.5 3H20v16.5c0 .83-.67 1.5-1.5 1.5H7.5C5.57 21 4 19.43 4 17.5V5.5Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M20 17H7.5C5.57 17 4 18.57 4 20.5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path d="M8 7h8M8 10h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
+
+/* Animaciones */
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(0deg); }
+  }
+  @keyframes float-slower {
+    0%, 100% { transform: translateY(0px) rotate(2deg); }
+    50% { transform: translateY(-25px) rotate(-2deg); }
+  }
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) rotate(-1deg); }
+    50% { transform: translateY(-18px) rotate(1deg); }
+  }
+  .animate-float { animation: float 8s ease-in-out infinite; }
+  .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
+  .animate-float-slower { animation: float-slower 12s ease-in-out infinite; }
+  .animate-float-medium { animation: float-medium 9s ease-in-out infinite; }
+`;
+document.head.appendChild(style);
