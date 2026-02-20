@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   Base global (Producción)
+   ========================= */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    @apply selection:bg-indigo-500/35 selection:text-white;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mejor UX: focus visible consistente */
+  :focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.7); /* indigo-500 */
+    outline-offset: 2px;
+  }
+
+  /* Links */
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  /* Inputs: evita estilos raros en mobile */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* Quita autofill amarillo en Chrome */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #e2e8f0; /* slate-200 */
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.06) inset;
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.06) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+/* =========================
+   Componentes utilitarios
+   (reutilizables en vistas)
+   ========================= */
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-6xl px-4;
+  }
+
+  .card {
+    @apply rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 font-semibold;
+    @apply bg-indigo-500 text-white transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 font-semibold;
+    @apply border border-white/10 bg-white/5 text-slate-100 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .input {
+    @apply w-full rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-slate-100 placeholder:text-slate-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500/60;
+  }
+
+  .label {
+    @apply text-sm text-slate-200;
+  }
+
+  .helper {
+    @apply text-xs text-slate-400;
+  }
+
+  .alert-error {
+    @apply rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200;
+  }
+
+  .alert-success {
+    @apply rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200;
+  }
+}
+
+/* =========================
+   Scrollbar (opcional, pro)
+   ========================= */
+@layer utilities {
+  /* Chrome/Edge */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    border: 2px solid rgba(15, 23, 42, 0.9); /* slate-900-ish */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) rgba(255, 255, 255, 0.06);
+  }
+}
